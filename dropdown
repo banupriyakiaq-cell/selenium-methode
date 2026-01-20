@@ -1,0 +1,44 @@
+package selenium;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class DropdownExample {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Admin\\eclipse-workspace\\FirstProject\\drivers\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://letcode.in/dropdowns");
+
+	
+
+		driver.manage().window().maximize();
+		WebElement dropDown1= driver.findElement(By.id("fruits"));
+		Select select = new Select(dropDown1);
+		select.selectByIndex(3);
+		select.selectByValue("2");
+		select.selectByVisibleText("Orange");
+	
+		List<WebElement> listOfOptions = select.getOptions();
+		int size= listOfOptions.size();
+		System.out.println("Number of elements:"+size);
+		
+		dropDown1.sendKeys("Loadrunner");
+		WebElement multiSelect=driver.findElement(By.id("superheros"));
+		Select multiselectBox= new Select(multiSelect);
+		multiselectBox.selectByIndex(1);
+		multiselectBox.selectByIndex(2);
+		multiselectBox.selectByIndex(3);
+
+	}
+	
+
+	}
+
+
