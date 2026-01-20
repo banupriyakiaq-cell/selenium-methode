@@ -1,0 +1,39 @@
+package selenium;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Point;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class ButtonExample {
+
+	public static void main(String[] args) {
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Admin\\eclipse-workspace\\FirstProject\\drivers\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://letcode.in/button");
+		driver.manage().window().maximize();
+
+
+		WebElement getFindLocation = driver.findElement(By.id("position"));
+
+		Point  xypoint=getFindLocation.getLocation();
+		int xValue=xypoint.getX();
+		int yValue=xypoint.getY();
+		System.out.println("X values is :"+ xValue+"Y value is :"+ yValue);
+
+		WebElement colorButton= driver.findElement(By.id("color"));
+		String color= colorButton.getCssValue("Button color is :+color");
+		System.out.println("Button color is:"+color);
+
+		WebElement sizeButton=driver.findElement(By.id("property"));
+		int height= sizeButton.getSize().getHeight();
+		int width=sizeButton.getSize().getWidth();
+		System.out.println("Height is :"+ height+"Width is:"+width);
+
+	    WebElement homeButton = driver.findElement(By.id("home"));
+		homeButton.click();
+
+	}
+
+}
